@@ -1,7 +1,3 @@
-/**
- * Nature Remo API: https://developer.nature.global/
- */
-
 function fillNatureRemo(){
   var data = [getDate()];
   var columns = ['Datetime']; 

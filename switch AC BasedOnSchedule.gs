@@ -14,7 +14,7 @@ var currentTime = currentHour + currentMinute;
 
 // 開始時間に達したかをチェックする
 if (currentTime === startTime) {
-setAircon(cmd = "power-on");
+setAircon(cmd = "on");
 sheet.getRange("B4").setValue(1); // エアコンの状態をオン（1）に設定する
 }
 
