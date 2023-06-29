@@ -27,7 +27,7 @@ function setScheduleTrigger() {
   
   if (currentDateTimeString > startTime) {
     startTriggerTime.setDate(startTriggerTime.getDate() + 1);
-    deleTriggerTime.setDate(deleTrigger.getDate() + 1); // 明日の同じ時刻に設定
+    deleTriggerTime.setDate(deleTriggerTime.getDate() + 1); // 明日の同じ時刻に設定
   }
   
   ScriptApp.newTrigger("deleteSheet")

@@ -14,7 +14,7 @@ var currentTime = currentHour + currentMinute;
 
 // 開始時間に達したかをチェックする
 if (currentTime === startTime) {
-setAircon(cmd = "on");
+setAircon(cmd = "");
 }
 
 // 終了時間に達したかをチェックする
