@@ -15,10 +15,10 @@ function getAirConditionerId() {
   return airconId;
 }
 
-function setAirconOn() {
+function setAircon(cmd) {
   var url = "https://api.nature.global/1/appliances/" + airconId + "/aircon_settings";
   
-  const payload = {"button" : ""};
+  const payload = {"button" : cmd};
   const headers = {'Authorization': 'Bearer ' + ACCESS_TOKEN,}; 
 
   var options = {
@@ -36,21 +36,4 @@ function setAirconOn() {
 
 
 
-function setAirconOff() {
-  var url = "https://api.nature.global/1/appliances/" + airconId + "/aircon_settings";
-  
-  const payload = {"button" : "power-off"};
-  const headers = {'Authorization': 'Bearer ' + ACCESS_TOKEN,}; 
 
-  var options = {
-    "method": 'post',
-    "headers": headers,
-    "payload": payload,
-  };
-  
-  Logger.log("Sending this request: " + url);
-  
-  var response = UrlFetchApp.fetch(url, options);
-  
-  Logger.log("Received this response: " + response.getContentText());
-}
