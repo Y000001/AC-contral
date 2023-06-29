@@ -19,16 +19,21 @@ function setScheduleTrigger() {
   startTriggerTime.setMinutes(startTime.substring(2, 4)); // 開始時間の分を設定
   startTriggerTime.setSeconds(0); // 秒を0に設定
 
-  if (currentDateTimeString > startTime) {
-    startTriggerTime.setDate(startTriggerTime.getDate() + 1); // 明日の同じ時刻に設定
-  }
-    ScriptApp.newTrigger("setScheduleTrigger")
-    .timeBased()
-    .at(startTriggerTime)
-    .create();
   
-  // 在开始触发器之前删除存储数据的工作表
-  deleteSheet();
+  var deleTriggerTime = new Date(); 
+  deleTriggerTime.setHours(startTime.substring(0, 2)); 
+  deleTriggerTime.setMinutes(startTime.substring(2, 4) - 1); 
+  deleTriggerTime.setSeconds(0); 
+  
+  if (currentDateTimeString > startTime) {
+    startTriggerTime.setDate(startTriggerTime.getDate() + 1);
+    deleTriggerTime.setDate(deleTrigger.getDate() + 1); // 明日の同じ時刻に設定
+  }
+  
+  ScriptApp.newTrigger("deleteSheet")
+    .timeBased()
+    .at(deleTriggerTime)
+    .create();
 
   ScriptApp.newTrigger("controlAirConditionerBasedOnSchedule")
     .timeBased()
