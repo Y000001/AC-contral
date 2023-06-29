@@ -14,13 +14,13 @@ var currentTime = currentHour + currentMinute;
 
 // 開始時間に達したかをチェックする
 if (currentTime === startTime) {
-controlAirConditioner(airconId, "power-on");
+controlAirConditioner(airconId, "power=on");
 sheet.getRange("B4").setValue(1); // エアコンの状態をオン（1）に設定する
 }
 
 // 終了時間に達したかをチェックする
 if (currentTime === endTime) {
-controlAirConditioner(airconId, "power-off");
+controlAirConditioner(airconId, "power=off");
 sheet.getRange("B4").setValue(0); // エアコンの状態をオフ（0）に設定する
 }
 }

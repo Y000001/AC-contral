@@ -20,12 +20,12 @@ function getAirConditionerId() {
 
 function controlAirConditioner(airconId, command) {
   const headers = {
-    'Authorization': 'Bearer ' + 'ZB7Xxi7xB9KSpTjVpEwNFY9dytZIGM4-yBkroHphPn4.tbE-tIEQna4LhBsiCxpP07Tp61yG932D1jZDqw6ifBI',
+    'Authorization': 'Bearer ' + ACCESS_TOKEN,
   };
 
   const url = 'https://api.nature.global/1/appliances/' + airconId + '/aircon_settings';
   const payload = {
-    button: command, 
+    "button" : command, 
   };
 
   const options = {
