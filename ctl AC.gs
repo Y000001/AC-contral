@@ -1,5 +1,3 @@
-var airconId = getAirConditionerId();
-
 function getAirConditionerId() {
   var data = getNatureRemoData("appliances");
   var airconId = ""; // 空调设备的ID
@@ -17,24 +15,42 @@ function getAirConditionerId() {
   return airconId;
 }
 
+function setAirconOn() {
+  var url = "https://api.nature.global/1/appliances/" + airconId + "/aircon_settings";
+  
+  const payload = {"button" : ""};
+  const headers = {'Authorization': 'Bearer ' + ACCESS_TOKEN,}; 
 
-function controlAirConditioner(airconId, command) {
-  const headers = {
-    'Authorization': 'Bearer ' + ACCESS_TOKEN,
+  var options = {
+    "method": 'post',
+    "headers": headers,
+    "payload": payload,
   };
-
-  const url = 'https://api.nature.global/1/appliances/' + airconId + '/aircon_settings';
-  const payload = {
-    "button" : command, 
-  };
-
-  const options = {
-    method: 'post',
-    headers: headers,
-    payload: JSON.stringify(payload),
-  };
-
+  
+  Logger.log("Sending this request: " + url);
+ 
   var response = UrlFetchApp.fetch(url, options);
-  var result = JSON.parse(response.getContentText());
-  console.log('空调设备状态:', result.settings.button);
+  
+  Logger.log("Received this response: " + response.getContentText());
+}
+
+
+
+function setAirconOff() {
+  var url = "https://api.nature.global/1/appliances/" + airconId + "/aircon_settings";
+  
+  const payload = {"button" : "power-off"};
+  const headers = {'Authorization': 'Bearer ' + ACCESS_TOKEN,}; 
+
+  var options = {
+    "method": 'post',
+    "headers": headers,
+    "payload": payload,
+  };
+  
+  Logger.log("Sending this request: " + url);
+  
+  var response = UrlFetchApp.fetch(url, options);
+  
+  Logger.log("Received this response: " + response.getContentText());
 }
