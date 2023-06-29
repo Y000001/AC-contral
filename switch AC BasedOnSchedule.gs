@@ -2,8 +2,8 @@
 function controlAirConditionerBasedOnSchedule() {
 var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("recode");
 
-// 開始時間、終了時間、エアコンの状態を取得する
-var startTime = sheet.getRange("B1").getValue();
+// 開始時間、終了時間を取得する
+var startTime = sheet.getRange("A2").getValue();
 var endTime = sheet.getRange("B2").getValue();
 
 // 現在の時間を取得する
@@ -15,12 +15,10 @@ var currentTime = currentHour + currentMinute;
 // 開始時間に達したかをチェックする
 if (currentTime === startTime) {
 setAircon(cmd = "on");
-sheet.getRange("B4").setValue(1); // エアコンの状態をオン（1）に設定する
 }
 
 // 終了時間に達したかをチェックする
 if (currentTime === endTime) {
 setAircon(cmd = "power-off");
-sheet.getRange("B4").setValue(0); // エアコンの状態をオフ（0）に設定する
 }
 }

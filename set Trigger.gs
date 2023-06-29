@@ -1,6 +1,6 @@
 function setScheduleTrigger() {
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("recode"); // "recode"という名前のシートを取得
-  var startTime = sheet.getRange("B1").getValue(); // 開始時間を取得
+  var startTime = sheet.getRange("A2").getValue(); // 開始時間を取得
   var endTime = sheet.getRange("B2").getValue(); // 終了時間を取得
   
   // 既存のトリガーを削除
