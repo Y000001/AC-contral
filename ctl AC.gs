@@ -32,6 +32,7 @@ function setAircon(cmd) {
   var response = UrlFetchApp.fetch(url, options);
   
   Logger.log("Received this response: " + response.getContentText());
+  
 }
 
 
