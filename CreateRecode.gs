@@ -27,6 +27,7 @@ function CreateRecodeSheet() {
 
   // 日付とタイトルを設定
   sheet.getRange("C1").setValue("日付"); // 本日の使用時間
+  sheet.getRange('C:C').setNumberFormat(formatA='yyyy/MM/dd HH:mm:ss')
   
   
    // 本日の使用時間とタイトルを設定
