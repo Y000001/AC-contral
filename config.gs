@@ -1,4 +1,4 @@
-//使うとき自分で修正する必要がある変数
+//修正する必要がある変数
 var NICKNAME_AIR_CONDITIONER = 'エアコン'; //Remo APP の中でエアコンのニックネームに修正,デフォルトはエアコン
 var NICKNAME_LIGHT = '照明';//Remo APP の中で照明のニックネームに修正、デフォルトは照明
 var ACCESS_TOKEN = '自分のアクセストークン';//自分のアクセストークンに修正
