@@ -9,4 +9,9 @@ function deleteSheet() {
   } else {
     Logger.log(sheetName + "'のシートは存在していない。");
   }
+  //开始新的数据记录
+  ScriptApp.newTrigger("fillNatureRemo")
+    .timeBased()
+    .everyMinutes(1)
+    .create();
 }

@@ -22,13 +22,21 @@ function setScheduleTrigger() {
   
   var deleTriggerTime = new Date(); 
   deleTriggerTime.setHours(startTime.substring(0, 2)); 
-  deleTriggerTime.setMinutes(startTime.substring(2, 4) - 1); 
+  deleTriggerTime.setMinutes(startTime.substring(2, 4) - 2); 
   deleTriggerTime.setSeconds(0); 
   
   if (currentDateTimeString > startTime) {
     startTriggerTime.setDate(startTriggerTime.getDate() + 1);
     deleTriggerTime.setDate(deleTriggerTime.getDate() + 1); // 明日の同じ時刻に設定
   }
+  
+  //今は開始と終了時間内ならデータ記録のトリガーを設定
+  if (currentDateTimeString > startTime && currentDateTimeString < endTime){
+    ScriptApp.newTrigger("fillNatureRemo")
+    .timeBased()
+    .everyMinutes(1)
+    .create();
+    }
   
   ScriptApp.newTrigger("deleteSheet")
     .timeBased()
@@ -54,13 +62,7 @@ function setScheduleTrigger() {
     .at(endTriggerTime)
     .create();
 
-  // 1分ごとにデータを記録
-  ScriptApp.newTrigger("fillNatureRemo")
-    .timeBased()
-    .everyMinutes(1)
-    .create();
-
-  // エアコンの使用時間を計算するトリガーを設定
+ // エアコンの使用時間を計算するトリガーを設定
   var calculateTriggerTime = new Date(endTriggerTime);
   calculateTriggerTime.setMinutes(calculateTriggerTime.getMinutes() + 1); // 終了時間の1分後に設定
   

@@ -43,4 +43,7 @@ function calculateAndRecordACUsageDuration() {
 
   // 保存当前行号
   PropertiesService.getScriptProperties().setProperty('lastRow', nextRow.toString());
-}
+  
+  //创建新的触发器
+  setScheduleTrigger();
+  }
